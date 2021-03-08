@@ -1,4 +1,4 @@
-import * as cxml from "@wikipathways/cxml";
+import * as cxml from "cxml";
 import * as gpml from "../xmlns/pathvisio.org/GPML/2013a";
 const fs = require("fs");
 const path = require("path");

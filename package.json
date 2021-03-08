@@ -1,5 +1,5 @@
 {
-  "name": "@calme1709/cxsd",
+  "name": "@johansenja/cxsd",
   "version": "0.3.2",
   "description": "Streaming XSD parser and XML parser generator with TypeScript output",
   "main": "./dist/index.js",
@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@calme1709/cxsd:build'); else npm run build; fi",
-    "prepublishOnly": "npm i --package-lock-only && ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@calme1709/cxsd:test'); else npm run test; fi",
+    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@johansenja/cxsd:build'); else npm run build; fi",
+    "prepublishOnly": "npm i --package-lock-only && ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@johansenja/cxsd:test'); else npm run test; fi",
     "postpublish": "TAG=\"v$(jq -r .version package.json)\" && git commit -am \"Bumped to version $TAG\" && git tag -a $TAG -m \"Published version $TAG\" && git push origin $TAG && git push origin master",
     "test": "npm-run-all test:* # In case of error, remove --silent to debug.",
     "test:build": "npm-run-all test:build:*",
@@ -50,12 +50,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/calme1709/cxsd.git"
+    "url": "git+https://github.com/johansenja/cxsd.git"
   },
   "bugs": {
-    "url": "https://github.com/calme1709/cxsd/issues"
+    "url": "https://github.com/johansenja/cxsd/issues"
   },
-  "homepage": "https://github.com/calme1709/cxsd#readme",
+  "homepage": "https://github.com/johansenja/cxsd#readme",
   "keywords": [
     "xsd",
     "dts",
@@ -68,7 +68,7 @@
     "@types/bluebird": "^3.5.33",
     "@types/node": "^14.14.28",
     "@wikipathways/cget": "0.1.7",
-    "@wikipathways/cxml": "0.2.14",
+    "cxml": "https://github.com/johansenja/cxml.git",
     "bluebird": "^3.7.2",
     "commander": "^7.1.0",
     "node-expat": "^2.3.18",

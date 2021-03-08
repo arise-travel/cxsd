@@ -4,7 +4,7 @@
 import {
   NamespaceBase,
   MemberSpec as Member
-} from "@wikipathways/cxml";
+} from "cxml";
 
 import { Context } from "./Context";
 import { Type } from "./Type";
