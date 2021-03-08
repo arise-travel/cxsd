@@ -85,6 +85,18 @@ export class Parser {
       }
     }
 
+    // NB:
+    //   TED HAVE A TENDENCY TO NOT INCLUDE A `type` ATTRIBUTE WHEN SPECIFYING A `fixed` ATTRIBUTE,
+    //   EVEN THOUGH IT APPEARS TO BE RECOMMENDED BY W3. IN EACH CASE, IT APPEARS THAT IT IS SAFE TO
+    //   INTERPRET THE ELEMENTS AS STRINGS (xs:string)
+    //   
+    //   TODO: it would be great to update the generate TS types to use the string literals as
+    //   supplied by the `fixed` attribute
+    //   ie. type a = { foo: 'bar' } as opposed to type a = { foo: string }
+    if (attrTbl.fixed && !attrTbl.type) {
+      attrTbl.type = "xs:string";
+    }
+
     // Copy known attributes to XSD element.
 
     for (var key of rule.attributeList) {
