@@ -1,0 +1,11 @@
+version: '3'
+services: 
+  cxsd-builder:
+    build: .
+    working_dir: /app
+    command: /bin/sh -c 'sleep 5000000'
+    container_name: cxsd-builder
+    environment: 
+      - NODE_ENV=development
+    volumes: 
+      - ./:/app

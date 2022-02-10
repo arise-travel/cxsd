@@ -1,5 +1,5 @@
 {
-  "name": "@calme1709/cxsd",
+  "name": "@arise-travel/cxsd",
   "version": "0.3.2",
   "description": "Streaming XSD parser and XML parser generator with TypeScript output",
   "main": "./dist/index.js",
@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@calme1709/cxsd:build'); else npm run build; fi",
-    "prepublishOnly": "npm i --package-lock-only && ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@calme1709/cxsd:test'); else npm run test; fi",
+    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@arise-travel/cxsd:build'); else npm run build; fi",
+    "prepublishOnly": "npm i --package-lock-only && ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@arise-travel/cxsd:test'); else npm run test; fi",
     "postpublish": "TAG=\"v$(jq -r .version package.json)\" && git commit -am \"Bumped to version $TAG\" && git tag -a $TAG -m \"Published version $TAG\" && git push origin $TAG && git push origin master",
     "test": "npm-run-all test:* # In case of error, remove --silent to debug.",
     "test:build": "npm-run-all test:build:*",
@@ -50,7 +50,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/calme1709/cxsd.git"
+    "url": "git+https://github.com/arise-travel/cxsd.git"
   },
   "bugs": {
     "url": "https://github.com/calme1709/cxsd/issues"
@@ -64,6 +64,9 @@
     "parser",
     "typescript"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/arise-travel"
+  },
   "dependencies": {
     "@types/bluebird": "^3.5.33",
     "@types/node": "^14.14.28",
@@ -72,6 +75,7 @@
     "bluebird": "^3.7.2",
     "commander": "^7.1.0",
     "node-expat": "^2.3.18",
+    "node-gyp": "^8.4.1",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
