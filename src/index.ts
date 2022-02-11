@@ -15,6 +15,7 @@ import * as schema from "./schema";
 
 interface IOptions {
   allowLocal: boolean;
+  forceNamespace: string;
   forceHost?: string;
   forcePort?: number;
   outJs: string;
@@ -35,6 +36,8 @@ const applyDefaultOptions = (partialOptions: Partial<IOptions>) => {
   if(partialOptions.outTs == undefined) {
     newOptions.outTs = "xmlns";
   }
+
+  console.log(`Running with options: ${JSON.stringify(newOptions)}`)
 
   return newOptions as IOptions;
 };

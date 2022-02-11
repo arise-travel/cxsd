@@ -10,6 +10,10 @@ import { Namespace } from "./Namespace";
 import { Source } from "./Source";
 import { Parser } from "./Parser";
 
+interface ExtendedFetchOptions extends FetchOptions {
+  forceNamespace?: string;
+}
+
 /** Copy all members of src object to dst object. */
 
 export function extend(
@@ -31,7 +35,7 @@ export function clone(src: Object) {
 /** Loader handles caching schema definitions and calling parser stages. */
 
 export class Loader {
-  constructor(context: Context, options?: FetchOptions) {
+  constructor(context: Context, options?: ExtendedFetchOptions) {
     this.context = context;
     this.options = clone(options || {});
     this.parser = new Parser(context);
@@ -42,7 +46,16 @@ export class Loader {
       this.resolve = resolve;
       this.reject = reject;
 
-      this.source = this.importFile(urlRemote);
+      // Check options for namespace
+      let namespace
+      if(this.options?.forceNamespace){
+        namespace = this.context.registerNamespace(
+          this.options.forceNamespace,
+          urlRemote
+        );
+      }
+
+      this.source = this.importFile(urlRemote, namespace);
     });
 
     return promise;
@@ -92,7 +105,7 @@ export class Loader {
   private static sourceTbl: { [url: string]: Source } = {};
 
   private context: Context;
-  private options: FetchOptions;
+  private options: ExtendedFetchOptions;
   private parser: Parser;
   private source: Source;
 

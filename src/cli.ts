@@ -15,6 +15,10 @@ cmd.version(require("../package.json").version)
     "Allow or disallow fetching files from local filesystem"
   )
   .option(
+    "-N, --force-namespace <string>",
+    "Use this namespace value.  Overrides existing targetNamespace attr."
+  )
+  .option(
     "-H, --force-host <host>",
     'Fetch all xsd files from <host>\n    (original host is passed in GET parameter "host")'
   )
